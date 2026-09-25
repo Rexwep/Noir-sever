@@ -1,0 +1,15 @@
+# Database (contains password hash) — never upload this
+noir.db
+noir.db-shm
+noir.db-wal
+
+# Local secrets
+.env
+
+# Dependencies (this project has none, but kept for safety)
+node_modules/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+*.log
