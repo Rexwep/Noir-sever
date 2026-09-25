@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="description" content="NOIR X11 — Original Websites for Business. Independent studio. Original websites. Layouts are not reused.">
 <title>NOIR X11 — Original Websites for Business</title>
 <style>
@@ -14,16 +14,16 @@
   --muted:#9b9b9d;
   --soft:#c4c4c6;
   --accent:#d8ff62;
-  --accent-soft:rgba(216,255,98,.16);
-  --glass:rgba(255,255,255,.04);
-  --line:rgba(255,255,255,.12);
-  --border-strong:rgba(255,255,255,.20);
-  --glass-highlight:rgba(255,255,255,.08);
+  --accent-soft:color-mix(in srgb, var(--accent) 16%, transparent);
+  --glass:color-mix(in srgb, var(--text) 4%, transparent);
+  --line:color-mix(in srgb, var(--text) 12%, transparent);
+  --border-strong:color-mix(in srgb, var(--text) 20%, transparent);
+  --glass-highlight:color-mix(in srgb, var(--text) 8%, transparent);
   --shadow:rgba(0,0,0,.32);
   --glow:var(--accent-soft);
-  --hero-overlay:rgba(7,7,8,.98);
+  --hero-overlay:color-mix(in srgb, var(--bg) 98%, transparent);
   --hero-vignette:rgba(0,0,0,.52);
-  --menu-bg:rgba(7,7,8,.90);
+  --menu-bg:color-mix(in srgb, var(--bg) 90%, transparent);
   --button-text:#080808;
 
   --max:1440px;
@@ -427,9 +427,16 @@ body.intro-active{overflow:hidden;height:100svh}
 @media (prefers-reduced-motion:reduce){#introRoot{display:none}}
 @media (max-width:560px){.sig-word{font-size:clamp(34px,12vw,64px)}}
 
+
+/* Android WebView app shell tweaks */
+html, body { -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+body { padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+#introRoot { max-width: 100vw; max-height: 100dvh; overflow: hidden; }
+.intro-mark, .sig-word { max-width: 100vw; overflow: hidden; }
+img { -webkit-user-drag: none; }
 </style>
 </head>
-<body>
+<body class="app-shell">
 <div id="introRoot" aria-hidden="true">
   <div class="intro-curtain top"></div>
   <div class="intro-curtain bottom"></div>
@@ -474,16 +481,16 @@ body.intro-active{overflow:hidden;height:100svh}
       <div class="hero-index" aria-live="polite"><span id="heroCurrent">01</span><i></i><span>06</span></div>
     </div>
     <div class="container hero-grid">
-      <div class="eyebrow">Independent digital studio · 2026</div>
-      <h1>Premium websites. Built once. Never copied.</h1>
+      <div class="eyebrow" id="heroEyebrow">Independent digital studio · 2026</div>
+      <h1 id="heroTitle">Premium websites. Built once. Never copied.</h1>
       <div class="hero-copy">
         <div>
-          <p>Original websites for businesses that need a precise first impression. No reused layouts. Scope is written before work begins.</p>
-          <div class="hero-proof" aria-label="NOIR X11 principles">
+          <p id="heroParagraph">Original websites for businesses that need a precise first impression. No reused layouts. Scope is written before work begins.</p>
+          <div class="hero-proof" id="heroProof" aria-label="NOIR X11 principles">
             <span>ORIGINAL DESIGN</span><span>RESPONSIVE SYSTEMS</span><span>WEBSITE CARE</span><span>SIGNATURE REGISTRATION</span>
           </div>
         </div>
-        <a class="cta" href="#form">Start a project <span>↗</span></a>
+        <a class="cta" href="#form"><span id="heroCtaText">Start a project</span> <span>↗</span></a>
       </div>
     </div>
   </section>
@@ -531,7 +538,7 @@ body.intro-active{overflow:hidden;height:100svh}
 
   <section>
     <div class="container">
-      <div class="metrics">
+      <div class="metrics" id="metricsContainer">
         <div class="metric"><b>01</b><span>Art direction</span></div>
         <div class="metric"><b>02</b><span>Premium website design</span></div>
         <div class="metric"><b>03</b><span>Responsive experience</span></div>
@@ -546,7 +553,7 @@ body.intro-active{overflow:hidden;height:100svh}
         <h2>How work<br>is delivered</h2>
         <p>Work moves from brief to lock to launch.</p>
       </div>
-      <div class="process">
+      <div class="process" id="processContainer">
         <article class="step"><div class="step-no">01 / POSITION</div><h3>Position</h3><p>Brand, audience, tone and primary action are set before design starts.</p></article>
         <article class="step"><div class="step-no">02 / COMPOSE</div><h3>Compose</h3><p>Layout, typography and imagery are built as one system.</p></article>
         <article class="step"><div class="step-no">03 / PERFECT</div><h3>Perfect</h3><p>Breakpoints, performance and launch checks are completed before handover.</p></article>
@@ -564,7 +571,7 @@ body.intro-active{overflow:hidden;height:100svh}
       </div>
       <a class="cta" href="#form">Start a project <span>↗</span></a>
     </div>
-    <div class="pricing-grid pricing-four">
+    <div class="pricing-grid pricing-four" id="pricingContainer">
       <article class="price-card"><div><div class="num">01 / Basic</div><h3>Basic</h3><div class="price-value">₹20,000</div><p>1–2 page original website. Responsive layout. Search-ready setup. Deployment. Premium hosting.</p></div><div class="price-note">Delivery: 3 days after brief, written content and images are received.<br>Domain client-provided · Maintenance not included · No Signature Model</div><a class="price-cta" href="#form">Choose Basic ↗</a></article>
       <article class="price-card"><div><div class="num">02 / Business</div><h3>Business</h3><div class="price-value">₹30,000</div><p>1–5 page original website. Responsive layout. Premium hosting. Domain. 7 days maintenance.</p></div><div class="price-note">Delivery: 5 days after brief, written content and images are received.<br><strong>7 Days Free Maintenance</strong> · No Signature Model</div><a class="price-cta" href="#form">Choose Business ↗</a></article>
       <article class="price-card"><div><div class="num">03 / Pro</div><h3>Pro</h3><div class="price-value">₹40,000</div><p>5–7 page original website. Administration panel. Premium hosting. Domain. 15 days maintenance. Client image updates after handover.</p></div><div class="price-note">Delivery: 7 days after brief, written content and images are received.<br><strong>15 Days Free Maintenance</strong> · No Signature Model</div><a class="price-cta" href="#form">Choose Pro ↗</a></article>
@@ -577,7 +584,7 @@ body.intro-active{overflow:hidden;height:100svh}
   <section id="rules">
     <div class="container">
       <div class="section-head"><div><div class="eyebrow">Studio rules</div><h2>Original work.<br>Clear terms.</h2></div><p>No reused complete designs. Scope, responsibilities and boundaries are written before work begins.</p></div>
-      <div class="process rules-list">
+      <div class="process rules-list" id="rulesContainer">
         <article class="step"><div class="step-no">01</div><h3>No design is remade.</h3><p>This applies from Basic to Signature. Two projects may share a category. They will not share a look.</p></article>
         <article class="step"><div class="step-no">02</div><h3>Client direction. Studio structure.</h3><p>The client sets colour, logomark, tone and primary action. The studio locks structure, typography, composition and page count.</p></article>
         <article class="step"><div class="step-no">03</div><h3>One revision follows lock.</h3><p>Additional pages or features are quoted separately. Client delay pauses the delivery clock.</p></article>
@@ -593,17 +600,17 @@ body.intro-active{overflow:hidden;height:100svh}
       <div class="contact">
         <div>
           <div class="eyebrow">Project</div>
-          <h2>Begin the next original.</h2>
-          <p class="flagship-note">Projects start by WhatsApp or email.</p>
+          <h2 id="contactHeading">Begin the next original.</h2>
+          <p class="flagship-note" id="contactTagline">Projects start by WhatsApp or email.</p>
         </div>
         <div class="contact-actions" aria-label="Project contact options">
-          <a class="contact-link wa" href="https://wa.me/919079688242?text=Hello%20NOIR%20X11%2C%20I%20want%20to%20start%20a%20project." target="_blank" rel="noopener">WhatsApp <span>↗</span></a>
-          <a class="contact-link mail" href="mailto:noirx11.web@gmail.com?subject=Project%20brief%20%E2%80%94%20NOIR%20X11&body=Hello%20NOIR%20X11%2C%0A%0AI%20would%20like%20to%20discuss%20a%20project.%0A%0AProject%20details%3A%0A" >Email <span>↗</span></a>
+          <a class="contact-link wa" id="contactWaLink" href="https://wa.me/919079688242?text=Hello%20NOIR%20X11%2C%20I%20want%20to%20start%20a%20project." target="_blank" rel="noopener">WhatsApp <span>↗</span></a>
+          <a class="contact-link mail" id="contactMailLink" href="mailto:noirx11.web@gmail.com?subject=Project%20brief%20%E2%80%94%20NOIR%20X11&body=Hello%20NOIR%20X11%2C%0A%0AI%20would%20like%20to%20discuss%20a%20project.%0A%0AProject%20details%3A%0A" >Email <span>↗</span></a>
         </div>
       </div>
       <footer>
-        <span>© 2026 NOIR X11</span>
-        <span>Original digital work</span>
+        <span id="footerLeft">© 2026 NOIR X11</span>
+        <span id="footerRight">Original digital work</span>
       </footer>
     </div>
   </section>
@@ -625,7 +632,7 @@ body.intro-active{overflow:hidden;height:100svh}
       <p>Care maintains the live website. It is not a new design.</p>
     </div>
 
-    <div class="care-grid">
+    <div class="care-grid" id="careContainer">
       <article class="care-card">
         <div class="care-index">01 / ESSENTIAL</div>
         <div><h3>Essential Care</h3><div class="care-price">₹4,999 <span>/ month</span></div></div>
@@ -878,16 +885,13 @@ window.setInterval(rotateHero,40000);
   var root=document.getElementById('introRoot');
   if(!root) return;
 
+  /* App build: play signature opening on every cold launch.
+     Respect reduced-motion accessibility only. */
   var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var seen=false;
-  try{ seen = sessionStorage.getItem('noirIntroSeen')==='1'; }catch(e){}
-
-  if(reduced || seen){
+  if(reduced){
     root.remove();
     return;
   }
-
-  try{ sessionStorage.setItem('noirIntroSeen','1'); }catch(e){}
 
   document.body.classList.add('intro-active');
 
@@ -901,12 +905,145 @@ window.setInterval(rotateHero,40000);
     window.setTimeout(function(){ if(root && root.parentNode) root.remove(); }, 1050);
   }
 
+  /* Tap/skip early if user wants to enter site faster */
+  root.addEventListener('click', finish, { once: true });
+
   requestAnimationFrame(function(){
-    root.classList.add('playing');
-    window.setTimeout(finish, 4300);
+    requestAnimationFrame(function(){
+      root.classList.add('playing');
+      window.setTimeout(finish, 4300);
+    });
   });
 })();
 </script>
-<script src="/cms.js"></script>
+<script>
+/* =========================================================
+   NOIR X11 — live content loader
+   Pulls PUBLISHED content from the admin panel's API and
+   fills it into the page. If the API is unreachable or a
+   module has no published content yet, the original text
+   already in this HTML stays exactly as-is (safe fallback).
+   Does NOT touch the intro sequence, color engine, hero
+   image rotation, or any animation above.
+   ========================================================= */
+(function(){
+  function esc(s){
+    var d = document.createElement('div');
+    d.textContent = (s === undefined || s === null) ? '' : String(s);
+    return d.innerHTML;
+  }
+  function setText(id, val){
+    if(val === undefined || val === null || val === '') return;
+    var el = document.getElementById(id);
+    if(el) el.textContent = val;
+  }
+  function setHref(id, val){
+    if(!val) return;
+    var el = document.getElementById(id);
+    if(el) el.href = val;
+  }
+
+  function renderHero(d){
+    if(!d) return;
+    setText('heroEyebrow', d.eyebrow);
+    setText('heroTitle', d.title);
+    setText('heroParagraph', d.paragraph);
+    setText('heroCtaText', d.ctaText);
+    if(Array.isArray(d.proofTags) && d.proofTags.length){
+      var el = document.getElementById('heroProof');
+      if(el) el.innerHTML = d.proofTags.map(function(t){ return '<span>'+esc(t)+'</span>'; }).join('');
+    }
+  }
+
+  function renderMetrics(d){
+    if(!d || !Array.isArray(d.items) || !d.items.length) return;
+    var el = document.getElementById('metricsContainer');
+    if(!el) return;
+    el.innerHTML = d.items.map(function(m){
+      return '<div class="metric"><b>'+esc(m.number)+'</b><span>'+esc(m.label)+'</span></div>';
+    }).join('');
+  }
+
+  function renderSteps(containerId, d){
+    if(!d || !Array.isArray(d.items) || !d.items.length) return;
+    var el = document.getElementById(containerId);
+    if(!el) return;
+    el.innerHTML = d.items.map(function(s){
+      return '<article class="step"><div class="step-no">'+esc(s.stepNo)+'</div><h3>'+esc(s.title)+'</h3><p>'+esc(s.description)+'</p></article>';
+    }).join('');
+  }
+
+  function renderPricing(d){
+    if(!d || !Array.isArray(d.items) || !d.items.length) return;
+    var el = document.getElementById('pricingContainer');
+    if(!el) return;
+    el.innerHTML = d.items.map(function(p){
+      return '<article class="price-card'+(p.featured?' featured':'')+'">'
+        +'<div><div class="num">'+esc(p.num)+'</div><h3>'+esc(p.name)+'</h3>'
+        +'<div class="price-value">'+esc(p.price)+'</div><p>'+esc(p.description)+'</p></div>'
+        +'<div class="price-note">'+ (p.note||'') +'</div>'
+        +'<a class="price-cta" href="#form">'+esc(p.ctaText)+' ↗</a></article>';
+    }).join('');
+  }
+
+  function renderCare(d){
+    if(!d || !Array.isArray(d.items) || !d.items.length) return;
+    var el = document.getElementById('careContainer');
+    if(!el) return;
+    el.innerHTML = d.items.map(function(c){
+      return '<article class="care-card'+(c.featured?' care-featured':'')+'">'
+        +'<div class="care-index">'+esc(c.index)+'</div>'
+        +'<div><h3>'+esc(c.name)+'</h3><div class="care-price">'+esc(c.price)+' <span>'+esc(c.priceNote||'/ month')+'</span></div></div>'
+        +'<ul>'+(Array.isArray(c.features)?c.features.map(function(f){return '<li>'+esc(f)+'</li>';}).join(''):'')+'</ul>'
+        +'</article>';
+    }).join('');
+  }
+
+  function renderContact(d){
+    if(!d) return;
+    setText('contactHeading', d.heading);
+    setText('contactTagline', d.tagline);
+    setText('footerLeft', d.footerLeft);
+    setText('footerRight', d.footerRight);
+    if(d.whatsappNumber){
+      var msg = d.whatsappMessage || '';
+      setHref('contactWaLink', 'https://wa.me/'+d.whatsappNumber+'?text='+encodeURIComponent(msg));
+    }
+    if(d.email){
+      var subj = d.emailSubject || '';
+      var body = d.emailBody || '';
+      setHref('contactMailLink', 'mailto:'+d.email+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body));
+    }
+  }
+
+  function applyTheme(d){
+    if(!d) return;
+    var map = {
+      bg:'--bg', surface:'--surface', surfaceAlt:'--surface-2',
+      text:'--text', muted:'--muted', soft:'--soft',
+      accent:'--accent', buttonText:'--button-text'
+    };
+    Object.keys(map).forEach(function(k){
+      if(d[k]) document.documentElement.style.setProperty(map[k], d[k]);
+    });
+  }
+
+  fetch('/api/content', {credentials:'same-origin'})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(data){
+      if(!data || !data.modules) return;
+      var m = data.modules;
+      applyTheme(m.theme);
+      renderHero(m.hero);
+      renderMetrics(m.metrics);
+      renderSteps('processContainer', m.process);
+      renderSteps('rulesContainer', m.rules);
+      renderPricing(m.pricing);
+      renderCare(m.care);
+      renderContact(m.contact);
+    })
+    .catch(function(){ /* offline / static preview — original hardcoded content stays visible */ });
+})();
+</script>
 </body>
 </html>
